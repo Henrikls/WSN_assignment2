@@ -8,6 +8,8 @@
 #define CNLS 16
 #define SMPLS 500
 
+PROCESS(main_process, "main_process");
+
 AUTOSTART_PROCESSES(&main_process);
 
 PROCESS_THREAD(main_process, ev, data)
