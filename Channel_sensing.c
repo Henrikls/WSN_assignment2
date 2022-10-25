@@ -39,18 +39,18 @@ PROCESS_THREAD(main_process, ev, data)
     //turn off radio 
     cc2420_off();
 
-    //find the best channel aka find highest number
+    //find the best channel aka find lowest number
     int best_dbm = list[0];
     int best_cnl = 0;
     for (i = 0; i < CNLS; i++)
     {
-        if(list[i] > best_dbm)
+        if(list[i] < best_dbm)
         {
             best_dbm = list[i];
             best_cnl = 11 + i;
         }
         //print the averages and their associated channels
-        printf("average = %d of channel = %d \n", list[i], i);
+        printf("average = %d of channel = %d \n", list[i], i+11);
     }
     printf("Best average = %d of channel = %d \n", best_dbm, best_cnl);
     cc2420_set_channel(best_cnl);
